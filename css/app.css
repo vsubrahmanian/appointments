@@ -11,3 +11,24 @@ body {
 .card {
   padding: 10px;
 }
+
+table {
+  font-family: 'Roboto Mono', monospace;
+  font-size: large;
+  text-align: left;
+  color: black;
+  border: 2px solid black;
+  background-color: ivory;
+  justify-content: center;
+  width: 100%;
+}
+
+th, td {
+  font-family: 'Roboto Mono', monospace;
+  font-size: large;
+  text-align: left;
+  color: black;
+  border: 2px solid black;
+  background-color: ivory;
+  padding: 8px;
+}
