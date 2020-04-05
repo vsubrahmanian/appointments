@@ -46,7 +46,7 @@ if (workbox) {
     );
 
     // add offline analytics
-    workbox.googleAnalytics.initialize();
+    // workbox.googleAnalytics.initialize();
 
     /* Install a new service worker and have it update
 and control a web page as soon as possible
