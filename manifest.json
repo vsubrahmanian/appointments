@@ -1,6 +1,11 @@
 {
-  "name": "Weight Converter",
-  "short_name": "weight converter",
+  "name": "Appointments",
+  "short_name": "Appointments",
+  "scope": "/",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ddd",
+  "theme_color": "#333",
   "icons": [
     {
       "src": "img/icons/icon-72x72.png",
@@ -42,9 +47,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#ddd",
-  "theme_color": "#333"
+  ]
 }
