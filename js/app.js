@@ -76,6 +76,7 @@ function resetInputs() {
   document.getElementById("geoLocationId").value = ""
 }
 
+
 //function that Generates table from data
 function generateAppListTable() {
   //Build an array containing Customer records.
@@ -125,7 +126,22 @@ function generateAppListTable() {
       }
   }
 
+  // Add the items to the table.
   var dvTable = document.getElementById("apptTable");
   dvTable.innerHTML = "";
   dvTable.appendChild(table);
 }
+  
+function downloadPDF(){
+  // Create PDF
+  var element = document.getElementById("apptContent")
+  html2pdf(element, {
+    margin: 10,
+    filename: "MyAppointments.pdf",
+    html2canvas: {dpi: 72, letterRendering: true},
+    jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'},
+    pagebreak: {mode: 'avoid-all'}
+  })
+  // html2pdf(element);
+}
+
