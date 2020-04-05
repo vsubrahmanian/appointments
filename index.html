@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Simple weight converter">
-  <title>Weight Converter</title>
+  <meta name="description" content="Simple Appointment Tracker">
+  <title>Appointment Tracker</title>
 
   <link rel="stylesheet" href="css/app.css">
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
@@ -14,10 +14,10 @@
   <!-- Open Graph-->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bolaji-wc.netlify.com/">
-  <meta property="og:title" content="Weight Converter">
+  <meta property="og:title" content="Appointment Tracker">
   <meta property="og:image" content="img/favicon.png">
-  <meta property="og:description" content="Simple weight converter">
-  <meta property="og:site_name" content="Weight Converter">
+  <meta property="og:description" content="Simple Appointment Tracker">
+  <meta property="og:site_name" content="Appointment Tracker">
   <!-- Next tags are optional but recommended -->
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -27,8 +27,8 @@
   <meta name="twitter:site" content="@iambolajiayo">
   <meta name="twitter:creator" content="iambolajiayo">
   <meta name="twitter:url" content="https://bolaji-wc.netlify.com/">
-  <meta name="twitter:title" content="Weight Converter">
-  <meta name="twitter:description" content="Simple weight converter">
+  <meta name="twitter:title" content="Appointment Tracker">
+  <meta name="twitter:description" content="Simple Appointment Tracker">
   <meta name="twitter:image" content="img/favicon.png">
 
   <link rel="manifest" href="/manifest.json" />
@@ -39,37 +39,26 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h1 class="display-4 text-center mb-3">
-          Weight Converter
-        </h1>
-        <form>
-          <div class="form-group">
-            <input type="number" class="form-control form-control-lg" id="lbsInput" placeholder="Enter pounds.."
-              required>
-          </div>
-        </form>
-        <div id="output">
-          <div class="card bg-primary mb-2">
-            <div class="card-block">
-              <h4>Grams:</h4>
-              <div id="gOutput"></div>
-            </div>
-          </div>
+        <h3 class="display-5 text-center mb-3">
+          New Appointment
+        </h3>
+            <input type="text" class="form-control form-control-lg" id="nameId" placeholder="Name" required>
+            <input type="tel" class="form-control form-control-lg" id="numberId" placeholder="Phone" required>
+            <input type="text" class="form-control form-control-lg" id="locationId" placeholder="Location">
+            <input type="date" class="form-control form-control-lg" id="dateId" placeholder="Date" required>
+            <input type="time" class="form-control form-control-lg" id="timeId" placeholder="Time" required>
+            <br>
+            <button type="button" class="form-control form-control-lg" id="buttonId" style="font-size:16px;background-color:coral;" onclick="getLocation();">Get Current Location</button>
+            <label type="label" class="form-control form-control-lg" id="geoLocationId" placeholder="Geo Location" for="geoLocation"></label>
+            <br>
+            <br>
+            <button type="button" class="form-control form-control-lg" id="saveApptId" style="font-size:24px;background-color:greenyellow;" onclick="saveAppointment();">Submit</button>
+            <br>
+            <br>
+            <a class="click-me" href="/applist.htm">
+              <button type="button" class="form-control form-control-lg" id="viewApptId" style="font-size:16px;background-color:bisque;">View Appointments</button>
+            </a>
 
-          <div class="card bg-success mb-2">
-            <div class="card-block">
-              <h4>Kilograms:</h4>
-              <div id="kgOutput"></div>
-            </div>
-          </div>
-
-          <div class="card bg-danger mb-2">
-            <div class="card-block">
-              <h4>Ounces:</h4>
-              <div id="ozOutput"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
