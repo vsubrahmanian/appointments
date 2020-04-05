@@ -12,7 +12,7 @@ function getLocation() {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    console.log("Geo Location not supported by browser");
+    alert("Geo Location not supported by browser");
   }
 }
 //function that retrieves the position
@@ -21,7 +21,7 @@ function showPosition(position) {
     longitude: position.coords.longitude,
     latitude: position.coords.latitude
   }
-  console.log(location)
+  document.getElementById("geoLocationId").value = location.latitude + "," + location.longitude
 }
 
 //function that Submits the data
@@ -32,16 +32,20 @@ function saveAppointment() {
   console.log("New Index: " + index);
 
   var name = document.getElementById("nameId").value
-  if (name == "") {
+  var date = document.getElementById("dateId").value
+  var time = document.getElementById("timeId").value
+  // Validation
+  if ((name == "") || (date == "") || (time == "")) {
     alert("Error: Enter details before saving.")
+    return;
   }
 
   var jsonObj = {
-    "name": document.getElementById("nameId").value,
+    "name": name,
     "number": document.getElementById("numberId").value,
     "location": document.getElementById("locationId").value,
-    "date": document.getElementById("dateId").value,
-    "time": document.getElementById("timeId").value,
+    "date": date,
+    "time": time,
     "geoLocation": document.getElementById("geoLocationId").value
   };
   localStorage.setItem("row"+index, JSON.stringify(jsonObj, null, 4));
@@ -75,7 +79,9 @@ function generateAppListTable() {
       var column1 = jsonObj.name + "</br>" + "Ph: " + jsonObj.number
       var geoLoc = ""
       if (jsonObj.geoLocation != null) {
-        geoLoc = "GEO: " + jsonObj.geoLocation
+        // https://www.google.com/maps/search/?api=1&query=<lat>,<lng>
+        var url = "https://www.google.com/maps/search/?api=1&query=" + jsonObj.geoLocation
+        geoLoc = "<a href=\"" + url + "\">Open Maps</a>"
       }
       var column2 = jsonObj.location + "</br>" + geoLoc
       var column3 = jsonObj.date + "</br>" + "At: " + jsonObj.time
