@@ -10,7 +10,12 @@ if ('serviceWorker' in navigator) {
 //function that gets the location and returns it
 function getLocation() {
   if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };    
+    navigator.geolocation.getCurrentPosition(showPosition, error, options);
   } else {
     alert("Geo Location not supported by browser");
   }
@@ -21,15 +26,17 @@ function showPosition(position) {
     longitude: position.coords.longitude,
     latitude: position.coords.latitude
   }
-  document.getElementById("geoLocationId").value = location.latitude + "," + location.longitude
+  var curentLoc = location.latitude + "," + location.longitude
+  document.getElementById("geoLocationId").innerHTML = curentLoc
+  document.getElementById("geoLocationId").value = curentLoc
+}
+
+function error(error) {
+  alert(`Geo Location ERROR(${error.code}): ${error.message}`);
 }
 
 //function that Submits the data
 function saveAppointment() {
-  var index = localStorage.getItem("currentIndex");
-  index = Number(index) + 1;
-  localStorage.setItem("currentIndex", index);
-  console.log("New Index: " + index);
 
   var name = document.getElementById("nameId").value
   var date = document.getElementById("dateId").value
@@ -39,6 +46,11 @@ function saveAppointment() {
     alert("Error: Enter details before saving.")
     return;
   }
+
+  var index = localStorage.getItem("currentIndex");
+  index = Number(index) + 1;
+  localStorage.setItem("currentIndex", index);
+  console.log("New Index: " + index);
 
   var jsonObj = {
     "name": name,
